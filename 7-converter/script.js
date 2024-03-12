@@ -1,29 +1,26 @@
 /*-- 7.10. Домашнее задание - Функции --*/
-
-const RATE_USD_RUB = 90;
-const RATE_EUR_RUB = 100;
-
-const changeRub = (sum, rate) => sum * rate;
-
 const converter = (sum, means, currency) => {
-	if (means !== 'руб') {
+	const RATE_USD = 1;
+	const RATE_EUR = 2;
+	const RATE_RUB = 3;
+
+	if (currency !== 'USD' && currency !== 'RUB' && currency !== 'EUR') {
 		return null;
 	}
 
-	let result = null;
-
 	switch(currency) {
-		case 'usd': 
-			result = changeRub(sum, RATE_USD_RUB);
+		case 'USD': 
+			return RATE_USD * sum;
 			break;
-		case 'eur': 
-			result = changeRub(sum, RATE_EUR_RUB);
+		case 'EUR': 
+			return RATE_EUR * sum;
+      break;
+		case 'RUB': 
+			return RATE_RUB * sum;
       break;
     default: 
-			result;
+			return null;
 	}
-
-	return result;
 }
 
-console.log(converter(1000, 'руб', 'eur'))
+console.log(converter(1000, 'RUB', 'USD'))

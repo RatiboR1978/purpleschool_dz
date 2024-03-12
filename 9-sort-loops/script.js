@@ -1,16 +1,17 @@
 /*-- 9.9. Домашнее задание - Циклы --*/
 
+const arr = [1, 40, -5, 10, 0];
+
 const sortArr = (arr) => {
-  for(let i = 0; i < arr.length; i++) {
-    for(let j= i + 1; j < arr.length; j++) {
-      if (arr[i] > arr[j]) {
-        let temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+  const [...result] = arr;
+  for(let i = 0; i < result.length; i++) {
+    for(let j= i + 1; j < result.length; j++) {
+      if (result[i] > result[j]) {
+        [result[i], result[j]] = [result[j], result[i]];
       }
     }
   }
-  return arr;
+  return result;
 }
 
-console.log(sortArr([1, 40, -5, 10, 0]))
+console.log(sortArr(arr), arr)

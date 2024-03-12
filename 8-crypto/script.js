@@ -2,22 +2,16 @@
 
 const crypto = (str) => {
 	const arr = str.split('');
-	if (arr.length < 7 || arr.length > 7) {
-		return 'Пароль должен содержать 7 символов';
-	}
-
-	[arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]] = [arr[5], arr[3], arr[4], arr[6], arr[2], arr[0], arr[1]];
-
-	return arr.join('');
+	const firstArr = arr.splice(arr.length / 2).reverse();
+	const secondArr = arr.splice(0).reverse();
+  [firstArr[0], firstArr[1], firstArr[2], firstArr[3]] = [firstArr[0], firstArr[2], firstArr[1], firstArr[3]];
+  
+  return secondArr.concat(firstArr).join('');
 }
 
-const check = (str, pass) => {
-	const arr = str.split('');
-
-	[arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]] = [arr[5], arr[6], arr[4], arr[1], arr[2], arr[0], arr[3]];
-
-	return arr.join('') === pass;
+function  checkPassword(password, codeStr){
+   return password === crypto(codeStr);
 }
 
-console.log(crypto('1234567'))
-console.log(check('6457312', '1234567'))
+console.log(crypto('password'))
+console.log(checkPassword('password', 'ssapdorw'))
