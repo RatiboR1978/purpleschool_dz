@@ -1,12 +1,15 @@
-/*-- 8.12. Домашнее задание - Массивы --*/
-
 const crypto = (str) => {
 	const arr = str.split('');
-	const firstArr = arr.splice(arr.length / 2).reverse();
-	const secondArr = arr.splice(0).reverse();
-  [firstArr[0], firstArr[1], firstArr[2], firstArr[3]] = [firstArr[0], firstArr[2], firstArr[1], firstArr[3]];
-  
-  return secondArr.concat(firstArr).join('');
+	let firstArr = arr.splice(0, arr.length / 2).reverse();
+	const secondArr = arr.reverse();
+	for (let i = 0; i < secondArr.length; i = i + 2) {
+		firstArr = [...firstArr, secondArr[i]]
+	}
+	for (let i = 1; i < secondArr.length; i = i + 2) {
+		firstArr = [...firstArr, secondArr[i]]
+	}
+
+	return firstArr.join("");
 }
 
 function  checkPassword(password, codeStr){
